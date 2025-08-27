@@ -68,7 +68,7 @@ fn cos_box(x: &Box<f32>, dx: &mut Box<f32>, dret: f32) -> f32 {
 
 Here, some details must be noted:
 - The dummy body of the differentiated function is later replaced by an Enzyme call at the LLVM level.
-- The dummy body is a bit hacky; although it works, it suggests that there could be a better way to do it. The `::core::hint::black_box(...)` calls are mainly there to mark items as used. The last one ensures the function has the right return type so it does not cause errors during early syntax analysis. `black_box` tells the compiler to be maximally pessimistic, preventing most optimizations. This allow the function to survive until lowering without breaking.
+- The dummy body is a bit hacky; although it works, it suggests that there could be a better way to do it. The `::core::hint::black_box(...)` calls are mainly there to mark items as used. The last one ensures the function has the right return type so it does not cause errors during type analysis. `black_box` tells the compiler to be maximally pessimistic, preventing most optimizations. This allow the function to survive until lowering without breaking.
 
 To solve this, we introduced an `autodiff` intrinsic defined as:
 ```rust
