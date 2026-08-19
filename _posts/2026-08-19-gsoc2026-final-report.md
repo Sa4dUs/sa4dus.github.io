@@ -17,7 +17,7 @@ The `offload` feature lets the Rust compiler generate code to be executed for GP
 
 The code below is the minimum required to run a simple kernel before this project (pseudocode, NVIDIA and no-std assumed for simplicity):
 
-```rust (pseudocode)
+```rust
 #![allow(internal_features)]
 #![feature(abi_gpu_kernel)]
 #![feature(rustc_attrs)]
